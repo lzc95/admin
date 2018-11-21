@@ -6,7 +6,7 @@ class Hello extends Component {
     render() {
         return (
             <div className="red">
-                hello, webpack,i'm react luozemgcahg 
+                hello, webpack,i'm react ,createBy luozengchang 
             </div>
         )
     }
