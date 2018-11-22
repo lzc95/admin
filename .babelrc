@@ -5,5 +5,10 @@
        "stage-0"
   ],
   "plugins": [
+    ["import", {
+      "libraryName": "antd",
+      "libraryDirectory": "es",
+      "style" : true
+    }]
   ]
 }

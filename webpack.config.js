@@ -34,7 +34,14 @@ module.exports = {
         },
         {
           test: /.less$/,
-          use:[MiniCssExtractPlugin.loader,'css-loader', 'less-loader']
+          use:[
+            {loader: MiniCssExtractPlugin.loader},
+            {loader: 'css-loader'}, 
+            {
+              loader: 'less-loader',
+            }
+          ],
+          include: /node_modules/
         },
         {
           test: /\.(png|jpg|gif)$/,
