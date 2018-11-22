@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-import { DatePicker, Layout} from 'antd'
+import {Layout} from 'antd'
 const { Header, Footer, Sider, Content } = Layout
-// import 'antd/dist/antd.less'
-import './index.css'
-import './base.css'
+import 'antd/dist/antd.css'
 class Hello extends Component {
   render() {
     return (
