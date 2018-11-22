@@ -11,6 +11,17 @@ module.exports = {
         path: path.join(__dirname, './dist'),
         filename: 'js/[name].js'
     },
+    devtool: '#source-map',
+    resolve: {
+      extensions: ['.js', '.jsx', '.json'],
+      modules: [
+        path.resolve('src'),
+        path.resolve('node_modules')
+      ],
+      alias: {
+        '@': path.resolve('src'),
+      }
+    },
     module: {
       rules: [
         {
@@ -37,7 +48,7 @@ module.exports = {
           use:[MiniCssExtractPlugin.loader,'css-loader', 'less-loader']
         },
         {
-          test: /\.(png|jpg|gif)$/,
+          test: /\.(png|jpg|gif|svg)$/,
           use: [{
             loader: 'url-loader',
             options: {
