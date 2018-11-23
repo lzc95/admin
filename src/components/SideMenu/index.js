@@ -1,20 +1,43 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom';
-import { Menu, Icon} from 'antd'
+import { Menu, Icon,Button} from 'antd'
 const SubMenu = Menu.SubMenu
 import {nav} from './config'
 class SideMenu extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      selectedKeys: 'article'
+    }
   }
+
   routeJump (path) {
     this.props.history.push(path)
   }
+  
+  componentWillMount () {
+    let path = this.props.history.location.pathname.substring(1)
+    this.setState({
+      selectedKeys: path
+    })
+  }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.location.pathname != this.props.location.pathname) {
+      let path = nextProps.history.location.pathname.substring(1)
+      this.setState({
+        selectedKeys: path
+      })
+    } 
+  }
+
   render () {
     let menus = nav
     return(
       <div>
-        <Menu mode="inline" theme="dark">
+        <Menu mode="inline" theme="dark" 
+          defaultSelectedKeys={['article']}
+          selectedKeys={[this.state.selectedKeys]}>
           {
             menus.map((item)=>{
               return(
