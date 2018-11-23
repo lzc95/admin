@@ -6,11 +6,11 @@ import LayoutComponent from '@/components/Layout'
 class Routes extends React.Component{
    render(){
         return(
-            // <Router>   
+            <Router>   
                 <div>  
                   <LayoutComponent/>
                 </div>
-            // </Router>
+            </Router>
         )
    }
 }

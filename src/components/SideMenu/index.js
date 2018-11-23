@@ -7,9 +7,9 @@ class SideMenu extends React.Component {
   constructor(props){
     super(props)
   }
-  // routeJump (path){
-  //   this.props.history.push(path)
-  // }
+  routeJump (path) {
+    this.props.history.push(path)
+  }
   render () {
     let menus = nav
     return(
@@ -19,7 +19,7 @@ class SideMenu extends React.Component {
             menus.map((item)=>{
               return(
                 !item.children &&
-                <Menu.Item key={item.id}>
+                <Menu.Item key={item.id} onClick={this.routeJump.bind(this,item.path)}>
                   <Icon type={item.icon} />
                   <span>{item.title}</span>
                 </Menu.Item>
@@ -33,7 +33,9 @@ class SideMenu extends React.Component {
                 <SubMenu key={item.id} title={<span><Icon type={item.icon} /><span>{item.title}</span></span>}>
                   { item.children.map((v)=>{
                       return(
-                        <Menu.Item key={v.id} >{v.title}</Menu.Item>
+                        <Menu.Item key={v.id} onClick={this.routeJump.bind(this,v.path)}>
+                          {v.title}
+                        </Menu.Item>
                       )
                     })
                   }
@@ -46,4 +48,4 @@ class SideMenu extends React.Component {
     )
   }
 }
-export default SideMenu
+export default withRouter(SideMenu)

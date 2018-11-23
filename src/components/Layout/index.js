@@ -1,8 +1,8 @@
-import React from 'React'
+import React from 'react'
 import {Layout} from 'antd'
 import SideMenu from '@/components/SideMenu'
 import logo from '@/assets/img/logo.svg'
-// import './style.css'
+import './style.css'
 const { Header, Footer, Sider, Content } = Layout
 
 class App extends React.Component {
@@ -11,7 +11,7 @@ class App extends React.Component {
       <div>
         <Layout style={{ minHeight: '100vh' }}>
           <Sider>
-            <p><img src={logo} className="logo" alt="logo" /><span className="title">后台管理</span></p>
+            <img src={logo} className="logo" alt="logo" /><span className="title">后台管理</span>
             <SideMenu/>
           </Sider>
           <Layout>
