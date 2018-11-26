@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
 const FormItem = Form.Item
 import './style.css'
@@ -13,7 +14,8 @@ class Login  extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
-        this.props.history.push('/article')
+        console.log(this.props)
+        this.props.handleLogin(values)
       }
     })
   }

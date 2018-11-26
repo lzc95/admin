@@ -1,18 +1,12 @@
 import * as TYPES from './type'
 
-const login = () => {
-  return{
-    type:TYPES.LOGIN
-  }
-}
-
-const logout = () => {
-  return{
-    type:TYPES.LOGOUT
+const setCurrentUser = (user) => {
+  return {
+    type: TYPES.SET_CURRENT_USER,
+    user
   }
 }
 
 export {
-  login,
-  logout
+  setCurrentUser
 }

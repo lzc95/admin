@@ -2,3 +2,22 @@ html,body,div,p{
   margin: 0;
   padding: 0;
 }
+.logo {
+  width:64px;
+  height:64px;
+  animation:logo-spin infinite 20s linear;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: 20px;
+}

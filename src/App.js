@@ -16,15 +16,18 @@ class App extends React.Component{
       collapsed: false,
     }
   }
+  // 侧边栏收起展开
   onCollapse = (collapsed) => {
-    console.log(collapsed);
     this.setState({ collapsed })
   }
 
+
   render(){
-    let isLogin = this.context.store.getState().loginStatus
+    let isLogin = this.context.store.getState().auth.isAuthenticated
     if (!isLogin) {
-      return <Login />
+      return (
+        <Login />
+      )
     }
     return(
       <Router>   
