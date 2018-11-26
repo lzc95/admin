@@ -4,8 +4,8 @@ import { Menu, Icon,Button} from 'antd'
 const SubMenu = Menu.SubMenu
 import {nav} from './config'
 class SideMenu extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props,context){
+    super(props,context)
     this.state = {
       selectedKeys: 'article'
     }
