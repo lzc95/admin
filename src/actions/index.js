@@ -1,9 +1,9 @@
 import * as TYPES from './type'
 
-const setCurrentUser = (user) => {
+const setCurrentUser = (status) => {
   return {
     type: TYPES.SET_CURRENT_USER,
-    user
+    status
   }
 }
 

@@ -1,21 +1,26 @@
+import {Message} from 'antd'
 import { connect } from "react-redux"
 import axios from '@/utils/axios'
-import jwt from 'jwt-simple'
 import LoginComponent  from '@/components/Login'
 import {setCurrentUser} from '@/actions'
 
 const mapStateToProps = (state) => {
+  console.log(state)
   return state
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
     handleLogin: (user) =>{
-        axios.post('/api/auth', user).then(res => {
+        axios.post('/api/login', user).then(res => {
         console.log(res)
-        // const token = res.data.token
-        // localStorage.setItem('token', token)
-        // dispatch(setCurrentUser(jwt.decode(token, 'jstSecret')))
+        if (res.code == 0) {
+          localStorage.setItem('token', res.token)
+          localStorage.setItem('username', res.data.username)
+          dispatch(setCurrentUser({status:true}))
+        } else {
+          Message.error(res.data)
+        }
       }).catch(err => {
         console.log(err)
       })

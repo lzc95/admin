@@ -1,10 +1,16 @@
 import React from 'react'
 import {Button, Icon} from 'antd'
+import axios from '@/utils/axios'
 import './style.css'
 
  class Article extends React.Component {
   constructor (props) {
     super(props)
+  }
+  componentWillMount(){
+    axios.post('/api/getArticle').then(res => {
+     console.log(res)
+    }).catch()
   }
   render () {
     return(

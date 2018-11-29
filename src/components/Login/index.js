@@ -14,7 +14,6 @@ class Login  extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values)
-        console.log(this.props)
         this.props.handleLogin(values)
       }
     })
@@ -39,11 +38,9 @@ class Login  extends React.Component {
             )}
           </FormItem>
           <FormItem>
-            <a className="login-form-forgot" href="">Forgot password</a>
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>
-            Or <a href="">register now!</a>
           </FormItem>
         </Form>
       </div>
