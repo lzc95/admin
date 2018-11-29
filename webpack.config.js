@@ -69,10 +69,17 @@ module.exports = {
     ],
     devServer: {
       contentBase: path.join(__dirname, './dist'),  //服务器读取文件目录
-      port: 9001,  //运行的端口号
+      port: 9000,  //运行的端口号
       inline: true, // 文件修改后实时刷新
       historyApiFallback: true,  //设为true,所有的页面都将跳转到index.html
       proxy: {
+        '/api': {
+          target: 'http://localhost:8000/', // 设置你调用的接口域名和端口号
+          changeOrigin: true,     // 跨域
+          pathRewrite: {
+            '^/api': ''
+          }
+        }
       }  
   }
 }

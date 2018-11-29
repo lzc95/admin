@@ -1,9 +1,8 @@
 import { connect } from "react-redux"
-import axios from 'axios'
+import axios from '@/utils/axios'
+import jwt from 'jwt-simple'
 import LoginComponent  from '@/components/Login'
 import {setCurrentUser} from '@/actions'
-import setAuthorizationToken from '@/utils/setAuthorizationToken'
-
 
 const mapStateToProps = (state) => {
   return state
@@ -11,13 +10,15 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    handleLogin: () =>{
+    handleLogin: (user) =>{
         axios.post('/api/auth', user).then(res => {
-        const token = res.data.token
-        localStorage.setItem('jwtToken', token)
-        setAuthorizationToken(token)
-        dispatch(setCurrentUser(jwtDecode(token)))
-      })  
+        console.log(res)
+        // const token = res.data.token
+        // localStorage.setItem('token', token)
+        // dispatch(setCurrentUser(jwt.decode(token, 'jstSecret')))
+      }).catch(err => {
+        console.log(err)
+      })
     }
   }
 }
