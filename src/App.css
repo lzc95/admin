@@ -2,6 +2,19 @@ html,body,div,p{
   margin: 0;
   padding: 0;
 }
+/* .siderContainer{
+  position: fixed;
+  top:0px;
+  left: 0px;
+  height: 100vh;
+}
+.ant-layout-sider{
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: relative;
+  background: #001529;
+  height: 100%;
+} */
 .logo {
   width:64px;
   height:64px;
@@ -43,4 +56,8 @@ html,body,div,p{
   width: 80px;
   cursor: pointer;
   margin-left:20px;
+}
+.ContentContainer{
+  padding-left: 300px;
+  margin-top: 100px;
 }

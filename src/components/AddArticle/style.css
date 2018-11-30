@@ -1,0 +1,11 @@
+.editor{
+  max-width: 90%;
+  min-height: 500px;
+}
+.content-item{
+  width: 400px;
+  margin-bottom: 20px;
+}
+.w-e-text-container{
+ height: 500px !important;
+}

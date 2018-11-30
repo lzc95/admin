@@ -1,13 +1,13 @@
 import React from "react"
 import {connect} from 'react-redux'
-import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 import {Layout, Spin, Avatar,Icon} from 'antd'
 import logo from '@/assets/img/logo.svg'
 import './App.css'
 const { Header, Footer, Sider, Content } = Layout
 import Login from '@/containers/login'
 import SideMenu from '@/components/SideMenu'
-import Article from '@/components/Article'
+
 import axios from '@/utils/axios'
 import {setCurrentUser} from '@/actions'
 
@@ -23,6 +23,11 @@ class App extends React.Component{
   // 侧边栏收起展开
   onCollapse = (collapsed) => {
     this.setState({ collapsed })
+  }
+
+  logout = () => {
+    this.props.logout({status:false})
+    window.location.reload()
   }
   
   componentDidMount () {
@@ -62,8 +67,9 @@ class App extends React.Component{
     }
     return(
       <Router>   
-        <Layout style={{ minHeight: '100vh' }}>
+        <Layout >
           <Sider
+            style={{ overflow: 'auto', height: '100vh',zIndex:2, position: 'fixed', left: 0 }}
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}>
@@ -72,20 +78,14 @@ class App extends React.Component{
             <SideMenu/>
           </Sider>
           <Layout>
-            <Header>
+            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
               <div className="userInfo">
                 <Avatar style={{ backgroundColor: '#87d068'}} icon="user" />
                 <span>Hi,{this.state.username}</span>
-                <button className="logout"><Icon type="logout" />退出</button>
+                <span className="logout" onClick={this.logout}><Icon type="logout" />退出</span>
               </div> 
             </Header>
-            <Content>
-              <Switch>
-                <Route exact path="/" render={() =><Redirect to='/article'/>}></Route>
-                <Route path="/article" component={Article}></Route>
-                <Route path="/login" component={Login}></Route>
-              </Switch>
-            </Content>
+            <Content className="ContentContainer">{this.props.children}</Content>
             <Footer>Footer</Footer>
           </Layout>
         </Layout>
@@ -106,7 +106,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     checkAuth: (status) =>{
-     dispatch(setCurrentUser(status))
+      dispatch(setCurrentUser(status))
     },
     logout: (status) => {
       dispatch(setCurrentUser(status))
