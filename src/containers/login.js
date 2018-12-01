@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
           localStorage.setItem('token', res.token)
           localStorage.setItem('username', res.data.username)
           dispatch(setCurrentUser({status:true}))
+          window.location.reload()
         } else {
           Message.error(res.data)
         }

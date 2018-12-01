@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Icon} from 'antd'
+import {Button, Icon, Table} from 'antd'
 import {withRouter} from 'react-router-dom'
 import axios from '@/utils/axios'
 import './style.css'
@@ -7,6 +7,9 @@ import './style.css'
  class Article extends React.Component {
   constructor (props) {
     super(props)
+    this.state = {
+      dataSource: []
+    }
   }
   addArticle = () => {
     this.props.history.push('/addArticle')
@@ -16,10 +19,26 @@ import './style.css'
      console.log(res)
     }).catch()
   }
+  
   render () {
+    const columns = [{
+      title: '标题',
+      dataIndex: 'title',
+      key: 'title',
+    }, {
+      title: '分类',
+      dataIndex: 'category',
+      key: 'category',
+    }, {
+      title: '创建时间',
+      dataIndex: 'createTime',
+      key: 'createTime',
+    }]
+
     return(
       <div>
-        <Button type="primary" className="addBtn" onClick={this.addArticle}>新建文章<Icon type="plus" /></Button>
+        <Button type="primary" onClick={this.addArticle}>新建文章<Icon type="plus" /></Button>
+        <Table dataSource={this.state.dataSource} columns={columns} />
       </div>
     )
   }

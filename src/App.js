@@ -69,7 +69,7 @@ class App extends React.Component{
       <Router>   
         <Layout >
           <Sider
-            style={{ overflow: 'auto', height: '100vh',zIndex:2, position: 'fixed', left: 0 }}
+            style={{ overflow: 'auto', height: '100vh',zIndex:100000, position: 'fixed', left: 0 }}
             collapsible
             collapsed={this.state.collapsed}
             onCollapse={this.onCollapse}>
@@ -78,7 +78,7 @@ class App extends React.Component{
             <SideMenu/>
           </Sider>
           <Layout>
-            <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
+            <Header style={{ position: 'fixed', zIndex:99999, width: '100%' }}>
               <div className="userInfo">
                 <Avatar style={{ backgroundColor: '#87d068'}} icon="user" />
                 <span>Hi,{this.state.username}</span>
